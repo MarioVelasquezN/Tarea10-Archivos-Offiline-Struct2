@@ -35,7 +35,7 @@ int WriteAll() {
 	Empleado p;
 
 	ofstream f;
-	f.open("empleado.txt", ios::binary | ios::app);
+	f.open("empleado.txt",ios::app);
 	while (1)
 	{
 		p.Write();
