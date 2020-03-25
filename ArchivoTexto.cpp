@@ -152,24 +152,31 @@ void Empleado::EliminarRegistro() {
 
 void Empleado::Compactar() {
 	char buffer[MAX_BUFFER];
+	bool cas = true;
 	ifstream f;
 	ofstream o;
 	Empleado p;
-	char*c = in_buffer;
-	f.open("empleado.txt",ios::in);
+	char *c = in_buffer;
+	f.open("empleado.txt", ios::in);
 	o.open("empleadonew.txt", ios::app);
 	if (!f) {
 		cout << "Archivo no pudo leerse!!";
 		return;
 	}
 
+	f.seekg(0, ios::end);
+	int sz = f.tellg();
 	f.seekg(0, ios::beg);
-	f.read(buffer, MAX_BUFFER);
-
-	for (size_t i = 0;c[i]!='*' ; i++)
+	while (!f.eof())
 	{
-		o.seekp(0, ios::end);
-		o.write(buffer,MAX_BUFFER);
+
+		f.read(buffer, MAX_BUFFER);
+		if (f.eof()) break;;
+
+		if (buffer[0] != '*')
+			o.write(buffer, MAX_BUFFER);
+
+
 	}
 }
 
