@@ -4,7 +4,8 @@
 #include <iostream>
 #include <cstring>
 #include <limits>
-
+#include <string.h>
+#pragma warning (disable : 4996)
 #pragma pack(1)
 //15*3+20+4
 #define MAX_BUFFER 64
@@ -35,6 +36,7 @@ public:
 	void setBBuffer(const char*);
 	void Write();
 	void GetEmpleadoByName(string);
+	int buscarEmpleado(const char*);
 	void EliminarRegistro();
 	void Compactar();
 	
